@@ -1,0 +1,75 @@
+Needs Rust up, VC, C++ Build tools.
+Memory only stores binary data, but anything can be represented with binary. 
+Code is automatically converted to binary representations. 
+In rust, variables can be made mutable with the mut keyword. However variables are immutable.
+
+
+let hello = "hello";
+let mut my_name = "Jack";
+let my_float = 0.5;
+let my_bool = true;
+
+
+Functions need the fn key word. then we add the name_of_function, next function_paramaters. 
+The  -> says what this fucntion returns.we can add the type of paramter accepted by function 
+We can specify the type of data that we are returning. 
+
+fn add(a: i32, b:i32) -> i32 {
+    a + b
+}
+
+let x = add(1, 1);
+
+Macros are defined by the !
+let life = 145;
+println!(life)
+println!("{:?}", life)
+"{:?}" - Debug mode.
+Macros generate additional rust code. Functions perform actions. Println lis a macro. 
+
+Control Flow
+let a =1;
+let b = 2;
+let c = 3;
+
+if a < 99 {
+    println!("Small Number");
+} else {
+    println!("Large number");
+}
+
+
+if a > 200 {
+    println!("Massive Number");
+} else if a > 99 {
+        println!("Big Number");
+} else {
+    println!("Small Number");
+}
+
+
+Repition
+In Rust, while loops is done with the loop keyword. Loop is an infinite loop, we can break out of when a condition is reached.
+While is another loop that is conditional, automatically checks condtions
+
+let mut a = 0;
+
+loop {
+    if a == 5 {
+        break;
+    }
+    println!("{:?}", a);
+    a = a+1;
+}
+
+
+### OR
+
+while (a!=5){
+    println!("{:?}", a);
+    a+=1;
+}
+
+We can break out of both loops. 
+
+Run files by cargo run --bin a1
