@@ -10,4 +10,13 @@
 // * Use an if..else block to determine which message to display
 // * Use the println macro to display messages to the terminal
 
-fn main() {}
+
+
+fn main() {
+    let run_program = false;
+    if run_program {
+        println!("The Prgram is Running");
+    } else {
+        println!("Program Paused, set the variable to True")
+    }
+}

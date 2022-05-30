@@ -73,3 +73,56 @@ while (a!=5){
 We can break out of both loops. 
 
 Run files by cargo run --bin a1
+
+Match
+Used to add logic to programs. All options must be accounted for. 
+Match works on expressions not statements.
+
+let some_bool = true;
+match some_bool {
+    true => println!("its true"),
+    false => println!("its false"),
+}
+
+in match if we use an _ (underscore) in the expression, it pretty much means everything else not listed. 
+compilers tell us if a possibility is not included, Match allows us to write more robust code. 
+Enums allow us to work with data in a type safe manner. Enums are one of multiiple different possibilities. Eacvh possibility is a variant.
+This results in more robust code
+
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+
+we can provide enumeration and match. 
+This enforces that every possibility can be checked. 
+
+fn which_way(go: Direction) {
+    match go {
+        Direction::Up => "up",
+        ...
+    }
+}
+
+Enums are created outside of the main function, possibly to memeory constraints. 
+Enums can be used to create our own type
+
+Struct allows us to create a datatype with multiple pieces of data. 
+Each piece of data is called a field. Similar data can be grouped and moved around in the code
+
+struct ShippingBox {
+    depth: i32,
+    width: 132,
+    height: i32,
+}
+
+let my_box = ShippingBox {
+    depth:3,
+    width:2,
+    height:5,
+};
+
+
+let tall = my_box.height;

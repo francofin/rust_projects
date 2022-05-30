@@ -9,4 +9,13 @@
 // * Print the variable within the loop statement
 // * Use break to exit the loop
 
-fn main() {}
+fn main() {
+    let mut max_number = 0;
+    loop {
+        if max_number == 5 {
+            break;
+        }
+        println!("{:?}", max_number);
+        max_number += 1;
+    }
+}
