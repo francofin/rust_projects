@@ -126,3 +126,21 @@ let my_box = ShippingBox {
 
 
 let tall = my_box.height;
+
+Tupel is a record. They store data anonymously and non named fields. 
+
+enum Access {
+    Full,
+}
+
+fn one_two_three() -> (i32, i32, i32){
+    (1,2,3)
+}
+
+let numbers = one_two_three();
+let (x,y,z) = one_two_three(); Destructured
+println!("{:?}, {:?}", x, numbers.0);
+println!("{:?}, {:?}", y, numbers.1);
+
+
+let (employee, access) = ("Jake", Access:Full); Different data types. Always best to destructure tuples. 

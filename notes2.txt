@@ -1,0 +1,119 @@
+Rust is an expression based language.
+Most things are evaluated and return some value. Expression values coalesce to a single point. and can be used for nesting logic
+
+E.g
+let my_num = 3;
+
+let is_lt_5 = if ny_num > 5 {
+    true
+} else {
+    false
+};
+
+Above is same as 
+
+let is_lt_5 = my_num < 5
+
+
+let message = match my_num {
+    1 => "hello",
+    _ => "Bye",
+}
+
+Expressions allow nested logic. 
+
+enum Access {
+    Admin,
+    Manager, 
+    User, 
+    Guest
+}
+
+Intermediate Memory.
+Memory is stored in binary, using bits, (0, 1), 1 byte is 8 bits. 8 contiguous bits. Entire memory can be thought of as contiguous bits.
+All data in memroy has a memory address. Only data at address is changed. 
+Memory offests can be used to locate items at an address. 
+It represents the number of bytes away from the original address. Normally we deal with indexes instead of the direct address. 
+Offsets begin at 0. 
+
+Ownership
+Allows rust to execute code in a performant manner. All programs track memory usage. If they fail to track memory, a leak occurs. 
+A memory leak is when a program fails to track whcih memory is being used, so it needs to reserve new pieces of memory. 
+Rust uses an ownership model. Owner of memory must clean the memory. An owner in Rust is the function. Memory can either be moved or borrowed
+
+Any function that owns data is required to delete the data once the function completes
+A function that calls a variable will delete it once it is done with it. Thus resuing variables must be done differently.
+Variables ownership gets changed once it passes from one function to another for example from main to another function. 
+Where we create a variable it becomes the initial owener. When another function calls the variable within a function (main for example)
+the other function becomes the function owner. 
+We need to use borrows in order to use the same variable in another function so that the new owner does not delete the variable afdter use
+
+We indicate borrows or references using the &. With this, it is not allowed to delete, thus, the function that borrows the variable is not allowed to delete it. 
+The owner of the data must clean up the memory, happens at end of the scope. Ownership is how rust manages memory.
+
+enum Light {
+    Bright, 
+    Dull,
+}
+
+fn display_light(light:&Light){
+    match light{
+        Light::Bright => ....,
+        Light::Dull => .....,
+    }
+}
+
+fn main() {
+    let dull = Light::Dull;
+    display_light(&dull);
+    display_light(&dull);
+}
+
+When memory is cleaned up it is dropped. 
+
+Implementing Functionality
+We use the impl keyword. 
+
+struct Temperature {
+    degrees_f: f64,
+}
+
+
+impl Temperature {
+    fn show_temp(temp: Temperature){
+        println!(...., temp.degrees_f);
+    }
+    fn show_temp(&self){
+        println!(...., self.degrees_f);
+    }
+    fn freezing() -> Self {
+        Self {
+            degrees_f: 32.0,
+        }
+    }
+    fn freezing() -> Temperature {
+        Temperature {
+            degrees_f: 32.0,
+        }
+    }
+}
+
+
+fn main() {
+    let hot  = Temperature {
+        degrees_f: 99.9,
+    }
+
+    hot.show_temp();
+
+    Temperature::show_temp(hot);
+
+    let cold = Temperature::freezing();
+    cold.show_temp();
+}
+
+The impl block, takes name of struct and within the block, when accessing the fucntion, 
+use the name of struct :: and name of function to call from the impl block
+We can change reference to self as well. This is object orientation. 
+Capital Self means we are creating a new Temperature or new structure, where as the lower case refers to the one intiialized. 
+

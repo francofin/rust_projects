@@ -1,0 +1,173 @@
+Vectors can store multiple pieces of data. 
+It must hold the same type of data. We can store enums, Strings, Numbers. Structs. Can add or remove from a vectors. 
+
+let my_numbers = vec![1, 2, 3];
+
+let mut my_numbers = Vec::new();
+my_numbers.push(<number>); to add
+my_numbers.pop(); to remove last item
+my_numbers.len(); returns length of vector.
+
+
+my_numbers[<number>]; indexes the vector. 
+More convenient to use the vec! macro. 
+
+
+for num in my_numbers {
+    println!("{:?}", num);
+}
+
+struct Test {
+    score: i32,
+}
+
+fn main(){
+    let my_scores = vec![
+        Test{score:90},
+        Test {score:55},
+        Test{score:80},
+        Test{score:77},
+    ];
+
+    for test in my_scores {
+        println!("{:?}", test.score);
+    }
+}
+
+Vectors maintain order. 
+For loops take ownership of the variables it iterates through. 
+
+Strings.
+2 commonly used types, String (owned data type) and &str, borrowed string slice
+Must use an owned string to store in a struct.
+When we give a str data to a function we use the &str slice. 
+
+fn print_it(data: &str){
+    println!("{:?}", data);
+}
+
+Owned String
+
+let owned_string = "owned string".to_owned();
+let another_owned = String::from("another");
+
+We need to borrow the string that we create that are owned. or if borrwed as an arg in a fucntion. 
+
+Derive macro
+applied to enums and structs, allow us to automatically implement some functionality e.g enum printing.
+Clone and COpy informs compiler that it can make a copy when storing in the struct or function. Ownership is no longer transferred. 
+A copy is made instead. We end up with 2 copies of data. These derived functions must me in all objects that are connected. 
+Clone and copy should only be applied to structures that are small. 
+
+#[derive(Debug, Clone, Copy)]
+enum Postion{
+    Manager, 
+    Supervisor,
+    Worker
+}
+
+#[derive(Debug, CLone, COpy)]
+struct Employee{
+    position:Postion, 
+    work_hours:i64,
+}
+
+
+fn main(){
+    let me = Employee{
+        position: Position::Worker,
+        work_hours:40,
+    };
+
+    println!(me);
+    println!(me);
+}
+
+Type Annotations.
+We can specify types in certain locations. Types are usually inferred by the rust compiler. 
+
+enum Mouse{
+    RightClick,
+    LeftClick,
+    MiddleClick,
+}
+
+let num: i32 = 15;
+let a: char = 'a';
+let left_click: Mouse = Mouse::LeftClick;
+
+A vectors is a generic datatype as it can contain other types. 
+
+let numbers: Vec<i32> = vec![1,2,3];
+let letters: Vec<char> = vec!['a', 'b'];
+
+Must specify the type when using a structure. 
+
+Enums.
+Again each item in an enum is a variant. 
+Each option within the enum can contain additional data. To associate data we use parentheses with the data type (i32)
+
+enum Mouse{
+    RightClick,
+    LeftClick,
+    MiddleClick,
+    Scroll(i32),
+    Move(i32, i32),
+}
+
+enum PromoDiscount {
+    NewUser,
+    Holiday(String),
+}
+
+enum Discount{
+    Percent(f64),
+    Flat(i32),
+    Promo(PromoDiscount),
+    Custom(String),
+}
+
+Optional data can be managed, we may use optional data where data may not be required. We use the option type. 
+Data may not be required or unavailable at the time. 
+Option type contains Some or None. T is some type of data. 
+
+enum Option<T>{
+    Some(T),
+    None
+}
+
+
+struct Customer{
+    age: Option<i32>,
+    email:String,
+}
+
+let mark = Customer{
+    age: Some(22),
+    email:"mark@example.com".to_owned(),
+};
+
+let jess = Customer {
+    age: None, 
+    email:"jess@example.com".to_owned(),
+}
+
+fn find_quantity(name: &str) -> Option<i32>{
+    let groceries = vec![
+        GI{name:"banana".to_owned(), qty:4},
+        GI{name:"straws".to_owned(), qty:20},
+        GI{name:"Chocolate".to_owned(), qty:15}
+    ];
+
+    for item in groceries{
+        if item.name == name {
+            return Some(item.qty);
+        }
+        else {
+            None
+        }
+    }
+}
+
+We can generate documentation as such 
+cargo doc --bin a15demo --open. Very useful.

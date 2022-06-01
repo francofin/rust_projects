@@ -12,23 +12,22 @@
 // * Use a match expression to determine which message
 //   to print
 
-enum Access {
-    Admin,
-    Manager, 
-    User, 
-    Guest
+
+
+fn print_message(value: bool) {
+    match value{
+        true => println!("Bigger"),
+        false => println!("Smaller"),
+    }
 }
 
-// fn print_message(decision: Bool) {
-//  //
-// }
 
 fn main() {
-    let access_level = Access::Guest;
-    let can_access_file = match access_level{
-        Access::Admin => true,
-        _ => false,
-    };
-
-    println!("{:?}", can_access_file);
+let value = 200;
+let message = if value > 100 {
+    true
+} else {
+    false
+};
+    print_message(message);
 }
