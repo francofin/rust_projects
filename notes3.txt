@@ -171,3 +171,5 @@ fn find_quantity(name: &str) -> Option<i32>{
 
 We can generate documentation as such 
 cargo doc --bin a15demo --open. Very useful.
+
+Standard Library 

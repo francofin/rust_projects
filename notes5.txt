@@ -1,0 +1,192 @@
+Modules
+
+Used for Code Organization. We use the mnod key word with a mod name. 
+using mod name with * will provide all functions within th emodule.
+We need to use the module within a module that uses another module. 
+When imported at the top of the file, it is only available to the main function. 
+
+use greet::*;
+
+mod greet {
+    fn hello(){
+        println!("hello");
+    }
+
+    fn goodbye() {
+        println!("Bye");
+    }
+}
+
+
+
+fn main() {
+    greet::hello();
+    or 
+    greet::hello;
+    hello();
+}
+
+Testing Code.
+We can create a test module and include the test macro. 
+cfg is configuration. Also need the test macro. Need a way to abort. 
+If program is aborted, test fails, else test succeeds. We can use the assert_eq macro. 
+It takes 3 args, value to check, value to expect, message if test fails. 
+The test module does nto have access to all caps func so must use in the module. 
+In Rust a collection of code is called a crate. Crate refers to the top of code whcih has main and all_caps function within the test mod. 
+
+
+fn all_caps(word: &str) -> String{
+    word.to_uppercase()
+}
+
+#[cfg(test)]
+mod test {
+    use crate::*; 
+    #[test]
+    fn check_all_caps(){
+        let result = all_caps("hello");
+        let expected = "HELLO".to_owned();
+        assert_eq!(result, expected, "String should be all uppercase.");
+    }
+}
+
+Option Combinators. 
+Is Some returns true if there is data and false if there is none. 
+Is none si the reverse. 
+Map only applies if there is some data. Map is a very convenient combinator. This works on Options. 
+Filter takes a closure that accepts a single function argument, this is the inner type of the option, the body of the closure, returns either true or false. 
+In this case we can use num as a takes an optional integer. If return value, true we keep the optional data if false we trhrow away. 
+Since Filter borrows the number, the comparison must also be borrowed. 
+or else returns nothing or something. If the value is already data, it returns nothing else it returns something. 
+Used when there is no data ansd we want to return it as somethgin else. 
+Remember we always need to match on optional data. 
+Unwrap or else returns takes out the data and places it in the variable it is set to. It takes out the data from the Optional value. 
+The default value can be set if no data is provide.d 
+
+We can run a debug!(<variable>) marco to debug the variable 
+Most of these values return Optional Data. 
+
+
+fn main() {
+    let a: Option<i32> = Some(1);
+
+    let a_is_some = a.is_some();
+    let a_is_none = a.is_none();
+
+    let a_mapped = a.map(|num| num +1);
+    let a_filtered = a.filter(|num| num == &1);
+    let a_or_else = a.or_else(|| Some(5));
+    let unwrapped = a.unwrap_or_else(|| 0);
+}
+
+Iterators 
+
+Collect creates a new vector out of the iterator. Iter ans Collect work on generic data types so we type annotate the vairbale created., 
+map also works on vectors.
+Find returns an optional value as it can return None. Last also returns as option as vector could be empty.
+take return some items from the vector. We take the first, second third ...and collect. 
+
+Iterators do not execute, but set up code for later work., 
+
+fn main() {
+    let numbers = vec![1,2,3,4,5];
+
+    let mut plus_one = vec![];
+    for num in numbers {
+        plus_one.push(num +1);
+    }
+
+    let plus_one_itter: Vec<_> = numbers.iter().map(|num| num+1).collect();    
+    let new_numers: Vec<_> = numbers.iter().filter(|num| num <=3).collect();
+    let find_me: Option<i32> = numbers.iter().find(|num| num ==3).unwrap_or_else(|| 0);
+
+    let count = numbers.iter().count();
+    let last_number: Option<i32> = number.iter().last();
+
+    let min_number: Option<i32> = number.iter().min();
+    let max_number: Option<i32> = number.iter().max();
+    let take_number: Vec<_> = number.iter().take(3).collect();
+}
+
+Ranges
+Automated way to create a range of values. 
+..= includes last value, bit .. does not include the last value. 
+
+fn main() {
+    let range = vec![1,2,3,4,5,6];
+    let range2 = 1..=6;
+    let range3 = 1..7;
+
+    for char in a..=g{
+        println!("{:?}", ch);
+    }
+}
+
+Traits
+A away to specify that some functionality exists. Used to standardize functionality across multiple types. 
+Standardization allows functions to operate on multiple different types. 
+Results in code deduplication. With functions we may need to write mutliple functions to operste on different types. 
+If types have similar funcitonality we can use a trait instead. One fucntions operate on trait and  used in multiple different data types. 
+
+Must implement trait
+Traits have a self ref. We need structs or enums. 
+
+trait Noise{
+    fn make_noise(&self) {
+
+    }
+}
+
+
+struct Person{
+    impl Noise for Person{
+        fn make_noise(&self){
+            println!("hello");
+        }
+    }
+}
+
+struct Dog{
+    impl Noise for Person{
+        fn make_noise(&self){
+            println!("woof");
+        }
+    }
+}
+
+
+fn hello(noisy: impl Noise){
+
+    noisy.make_noise();
+}
+
+
+fn main(){
+    hello(Person {});
+    hello(Dog {});
+}
+
+trait Racer{
+    fn go(&self);
+    fn is_ready(&self) -> bool;
+    fn checkoint)&self, position: i32);
+}
+
+if let
+
+
+External Crates. 
+Include other peoples code within the program. 
+
+Remember cargo init creates a project folder for us. 
+The .toml file configures the project. in the dependecy section her we include external crates. 
+We paste crates from crate .io into this section. Under dependencies. 
+
+
+use humantime::format_duration;
+use std::time::Duration;
+
+fn main(){
+    let d  = Duration::from_secs(9876);
+    println!("{:?}", format_duration((d));
+}

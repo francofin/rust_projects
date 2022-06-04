@@ -1,0 +1,174 @@
+Working with Data Result.
+A Result is a data type with successfull or error data. Used when an action needs to take but may fail. 
+E.g Connecting to a website. (Resolve, Reject)
+
+It is an enum with an OK variant or err 
+
+enum Result<T,E>{
+    Ok(T),
+    Err(E),
+}
+
+fn get_sound(name: &str) -> Result<SoundData, String>{
+    if name == "alert"{
+        Ok(SoundData::new("alert"))
+    } else {
+        Err("Unable to Find Sound Data".to_owned())
+    }
+}
+
+let sound = get_sound("alert");
+match sound {
+    Ok(_) => println!("Data located),
+    Err(e) => println!("error {:?}", e),
+}
+
+Remember we use Ok(variable_type)
+We also use the Result<T,E> format. 
+
+Derive with debug allows us to print out the options in an enum. It automatically matches without having to match. 
+
+HashMaps.
+Useful for storing and retrieving information. Stores Data as key value pairs. 
+
+let mut people = HashMap::new();
+
+people.insert("Susan", 23);
+people.insert("Bill", 23);
+people.insert("Cameron", 23);
+
+
+match people.get("Bill"){
+    Some(age) => println!("age {:?}", age),
+    None => println!("Not Found"),
+    }
+
+for (person, age) in people.iter(){
+    println!("person = {:?}, age = {:?}", person, age);
+}
+
+for (person) in people.keys(){
+    println!("person = {:?}", person);
+}
+
+for (age) in people.values(){
+    println!("age = {:?}", age);
+}
+
+Datas are stored in random order. 
+
+We need to import HashMaps, using 
+use std::collections::HashMap;
+
+#[derive(Debugs)]
+struct Contents{
+    content:String,
+
+}
+
+
+fn main() {
+    let lockers = HashMap::new();
+    lockers.insert(1, Contents {content:"stuff".to_owned()});
+}
+
+Using User Input
+
+use std::io;
+io (input output)
+
+fn get_input() -> io::Result<String>{
+    let mut buffer = Sting::new();
+    io::stdin().read_line(&mut buffer)?;
+    //Readline fn will read line, save into buffer that borrows. 
+    Ok(buffer.trim().to_owned())
+}
+
+fn main(){
+    let mut all_input = vec![];
+    let mut times_input = 0;
+    while times_input < 2{
+        match get_input(){
+            Ok(words) => {
+                all_input.push(words);
+                times_input+=1;
+            }
+            Err(e) => println!("error {:?}", e),
+        }
+    }
+
+    for input in all_input{
+        
+        println!("Original: {:?}, Capitalized: {:?}", input, input.to_uppercase())
+    }
+}
+io module has special type of Result as many things can go wrong with input outpyt
+We only provide the Ok data type.
+
+io:stdin returns a result with an is_ok() property.
+We create a buffer (space for a function to use)
+
+
+
+fn get_input()-> io::Result<String>{
+
+}
+
+A closure is an anonymous fucntion we can add to our code. 
+We do not need the name for a closure. They must be created within a funciton as they are anonymous. 
+We use the pipes to create a closure. Pipes correspond to the function parameters. 
+We put the args between the pipes. Accepts a value and b value and returns a +b. 
+We dont need to specify as Rust knows it will take 2 numbers. Convenient to pass a function as a paramter. 
+
+fn add_fn(a:i32, b:i32) -> i32{
+    a+b
+}
+
+fn main(){
+    let sum = add_fn (1,1);
+
+    let add = |a: i32, b:i32| -> i32 {
+        a+b
+    }
+
+    let add2 = |a, b| a+b;
+
+    let sum2 = add2(1,1);
+}
+
+Map COmbinator. 
+Used to transform data witihin the code.
+When we transfomr something from one to another its called mapping.  
+Map will only run if the value is there. 
+We can transform or create an entire new type.
+String.len() returns the number of values in a string. Eventiually we will need a match. 
+THe value returned belwo are optional values. 
+Map can be chained. 
+Map returns an optional value. 
+
+fn maybe_num() -> Option<i32> {
+
+}
+
+
+fn maybe_word() -> Option<String>{
+
+}
+
+
+fn main() {
+    let plus_one = match mayne_num() {
+        Some(num) => Some(num +1),
+        None => None,
+    }
+
+    let plus_one_mapped = maybe_num().map(|num| num +1);
+
+}
+
+
+fn main() {
+    let word_length = maybe_word.map(|word| word.len()).map(|len|len*2);
+}
+
+Option values have map functions defined on it.
