@@ -1,6 +1,6 @@
 Modules
 
-Used for Code Organization. We use the mnod key word with a mod name. 
+Used for Code Organization. We use the mod key word with a mod name. 
 using mod name with * will provide all functions within th emodule.
 We need to use the module within a module that uses another module. 
 When imported at the top of the file, it is only available to the main function. 
