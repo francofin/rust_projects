@@ -1,0 +1,51 @@
+Shadowing is just creating new variables with the same name. Not the best idea. 
+
+SIgned integers can hold positive and negative values. i32 for example. 
+Can also use u8 or u32, unsinged integers that can only be positive. max value for u8 is 2**8-1. (255)
+For i8 it is -2**7 to 2**7-1.
+
+let sys_num: isize = -10;
+let sys_num2: usize = 10;
+
+isize and usize, depends on operating sys. 32 bit operating sys, isize is i32. 
+Hexideciaml is 0-9 and a-f It works in the base 16 system. so 16 to power of x
+byte numbers use UTF encoding. 
+
+Stack
+After compilation, files are just a sequence of bytes. 
+xxd -g1 main to see what the file looks like. 
+With cargo run, the the os is giving the program access to the memory. A program is just a process. 
+
+We get memory from the OS. 
+Memory has a read only section that reads the code. Memory has the stack which executes functions. Variables with static size. 
+The heap can store more things. Sequence of bytes loaded in code memeory as executed. 
+As program runs, stack stores variables and functions. 
+
+Memeory allocates stack frame for the main function The stack pointer points to the top of the stack.
+Each function gets a stack frame created and loaded, this shifts the stack pointer. 
+
+On the stack we can only add values that are fixed size, where we know how much memory it will require. 
+Strings are not static size, so are stored differently. 
+Strings would be stored in the heap memory and a pointer to the location in the stack. 
+The pointer is stored along with capacity and length of string. This pointer is the space for the address. Capacity is just a number. 
+Capacity, is how much space is allocated. 
+
+When we re assign values that are stored on the heap, we are actually copying the po
+Dynamic variables are moved. 
+Primitive types get stored on the stack so thats why it can be accessed again and does not need borrowiing. 
+
+Copying happens with static values. References can be created. 
+References are created with the &<variable>
+
+let message = String::from("Hello World");
+let message2: &String = &message;
+
+References are essentially the pointer to the underlying owner of the data, whcih points to the actual data. 
+The references is just removed from the stack. Refence is a pointer that does not own the data. The owner of the data is essentially th esmart pointer. 
+We must mark the owner as mutable if we want to mutate the reference that owns the data. And specify that the type of the reference is mutable.
+
+Keep in mind my mutating the reference, we also mutate the smart pointer. THus the smart pointer is not mutated with the data initialized by the reference pointer. 
+
+
+let mut message = String::from("Hello World");
+let message2: &mut String = &mut message;

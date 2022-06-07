@@ -1,0 +1,87 @@
+Default trait, 
+Create structs and enums with a default value. 
+
+struct Package{
+    weight:f64,
+}
+
+impl Package{
+    fn new(weight: f64) -> Self{
+        Self {
+            weight
+        }
+    }
+}
+
+If user does not specify a weight we can add a default trait. 
+To implement default trait, 
+
+imple Default for Package {
+    fn default() -> Self{
+        Self {
+            weight: 3.0,
+        }
+    }
+}
+
+It is good to implement defualts where applicable to structs and enums 
+
+fn main() {
+    let default = Package::default();
+}
+
+We also have the const key word btw although i have mostly been using let. This is more common in Rust. 
+Constants are created with all caps as commonly seen syntax behaviour, and in addition we must specify the types on our constant. 
+
+
+const MAX_SPEED: i32 = 9000;
+
+fn clamp_speed(speed: i32) -> i32{
+    if speed > MAX_SPEED{
+        MAX_SPEED
+    } else {
+        speed
+    }
+}
+
+
+Modules as Files. 
+Must include mod.rs file when we create modules. 
+Groups are the sub modules of modules which is a sub module of the lib. The modules need the mod.rs file. 
+This is equivalent to index.js in javascript folder. 
+
+Custom Error Types. 
+Use thiserror crate, 
+
+
+#[derive(Error, Debug)]
+pub enum LoginError {
+    #[error("database error")]
+    DatabaseError(#[from] SqlError),
+    #[error("password expired")]
+    PasswordExpired,
+    #[error("User not found")]
+    UserNotFound,
+    #[error("wrong password")]
+    WrongPassword,
+    #[error("network COnnection Error")]
+    NetworkError(#[from] std::io::Error),
+}
+
+#[error("database error")]
+# error we can include th emessage tod isplay when error occurs. 
+We convert from SqlError type to the new DatabaseError. 
+The #from says what type to convert from. 
+
+String is a session id to ensure the user does not get logged out. 
+
+fn login(user: &str, password: &str) -> Result<String, LoginError>{
+    let connection: Result<Connection, std::io::Error> = connect();
+    let user_id = get_user_id(user)?;
+    if try_password(user_id, password){
+        let session: Result<String, SqlError> = get_session(user_id);
+        Ok(session)
+    } else{
+        Err(LoginError::WrongPassword)
+    }
+} 

@@ -1,0 +1,20 @@
+Just need the curl command on Mac or linux from rust -lang.org.
+On mac run source $HOME/.cargo/env, can run rustup update. 
+Download rustup init https://www.rust-lang.org/tools/install
+Install. Must also have C++ build tools.
+
+Rust:
+It is fast, safe, operate on low level instructions. 
+Can work with Web Assembly, Can create apps that run in the browser. 
+
+Managing versions. 
+rustup install nightly
+rustup install stable
+
+can also use rustup default nightly
+rustup show shows all versions
+rustup default stable switches back t stable v.
+
+rustup install nightly-2021-11-29
+
+Rustc with file name gehnerates the binary file. LLVM compiles the code into the binary. 

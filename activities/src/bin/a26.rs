@@ -11,11 +11,13 @@
 use chrono::*;
 use humantime::format_duration;
 use std::time::Duration;
-
-
+use demo::print_from_lib;
+use demo::group_one;
 
 fn main() {
     println!("Hello");
+    print_from_lib();
+    group_one::g1::print_from_g1();
     let utc: DateTime<Utc> = Utc::now();       // e.g. `2014-11-28T12:45:59.324310806Z`
     let local: DateTime<Local> = Local::now();
 
@@ -44,8 +46,8 @@ fn main() {
     // other time zone objects can be used to construct a local datetime.
     // obviously, `local_dt` is normally different from `dt`, but `fixed_dt` should be identical.
     let local_dt = Local.ymd(2014, 7, 8).and_hms_milli(9, 10, 11, 12);
-    println!("This prints local Time at {:?}", local_dt.format("%a %b %e %T %Y").to_string());
+    println!("This prints local Time at {}", local_dt.format("%a %b %e %T %Y").to_string());
     let fixed_dt = FixedOffset::east(9 * 3600).ymd(2014, 7, 8).and_hms_milli(18, 10, 11, 12);
-    println!("This prints fixed Time at {:?}", fixed_dt);
+    println!("This prints fixed Time at {}", fixed_dt);
     // assert_eq!(dt, fixed_dt);
 }
