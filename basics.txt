@@ -45,7 +45,132 @@ The references is just removed from the stack. Refence is a pointer that does no
 We must mark the owner as mutable if we want to mutate the reference that owns the data. And specify that the type of the reference is mutable.
 
 Keep in mind my mutating the reference, we also mutate the smart pointer. THus the smart pointer is not mutated with the data initialized by the reference pointer. 
-
+Pointers have a drop function that removes the underlying memory of the dynamic type.
+Mutating through the reference results in a process of derewferencing. 
 
 let mut message = String::from("Hello World");
 let message2: &mut String = &mut message;
+
+println!("{}", message);
+println!("{}", message2); Error
+
+
+println!("{}", message2);
+println!("{}", message); Correct
+
+We cannot have a mutable borrow after an immutable borrow. We do not know which operation happens first. This just assures that we return what we want. 
+Immutable references must follow mutable references to ensure data integrity. 
+
+Dereference. 
+
+Rust applies * to a reference so we can dereference from the original variable. 
+e.g push_str is only applied to String. Thw * dereferences the variable accesses the owner of the data itself. 
+
+let a = 10;
+let b = &a;
+let mut c = &b;
+let d = b;
+
+let e = &&100;
+c = e;
+
+If we want to see the value of a pointer we can look at {:p} where p implies the pointer to the variable. 
+&mut(**e)
+
+
+String vs &str.
+
+Where as String has the pointer, capacity and length, &str only has the pointer and length but we cannot change the capacity. 
+The &str however only points to the readonly part of the memory. 
+We cannot mutate the &str. 
+
+
+fn main() {
+    let mut message = String::from("hello");
+    let name = "Jack";
+
+    message.push_str(" World");
+
+}
+
+A slice actually just points to the index of the actual data of the slice. Keep in mind the issue when the data itself goes out of scope. 
+Clone creates new resources as it reallocates heap memory for the new variable. 
+It takes a bit more memory however. 
+
+Box type
+Used to store data in the heap. If we want to place prim types on the heap
+A box is essentially a pointer that points to the heap. 
+Rust does not have objects and classes.
+
+
+Structs
+Boxes are structs. 
+Instances cannot access the functions implemented but the struct can access this 
+functions that do nto take self, are not available on the instance of the struct. 
+We should include a reference to self and not self itself that way it is not moved once the method is complete. 
+new creates default , from we must supply the constructor agrs. 
+struct Person{
+    name:String,
+    age: i32,
+    profession:String,
+}
+
+fn main() {
+    let num = 32; on stack
+    let num2 = Box::new(100); on heap.
+}
+
+impl Person {
+
+    fn new() -> Self{
+        Self {
+            name:"default".to_owned(),
+            age: 0,
+            profession: "default".to_owned(),
+        }
+    }
+
+    fn from(name: String, age:i32, profession:String) -> Person{
+        Person{
+            name,
+            age,
+            profession,
+        }
+    }
+
+
+    fn some_function() {
+        println!("Some Function");
+    }
+
+    fn display_age(&self){
+        //note in background rust is actually doing self: &Self
+        //this is a method
+        println!("{}", self.age);
+    }
+
+    fn change_age(&mut self, new_age: i32){
+        self.age = new_age;
+    }
+}
+
+
+let mut person = Person{
+    name:"Michael Jackson".to_owned(),
+    age:50,
+    profession: "Singer Songwriter".to_owned(),
+};
+
+person.change_age(330);
+
+let mut person2 = Person::new();
+
+person2.change_age(500);
+
+let mut person3 = Person::from(
+    String::from("John"),
+    35,
+    String::from("Lancaster"),
+);
+
+person3.change_age(500);

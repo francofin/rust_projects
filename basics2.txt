@@ -1,0 +1,94 @@
+Enums
+
+WHen there are multiple options we can create an Enums
+
+#[derive(Debug)]
+enum PersonId {
+    Passport,
+    IdentityCard,
+}
+
+struct Person{
+    name:String,
+    age: i32,
+    profession:String,
+    id: PersonId,
+}
+
+impl Person {
+
+    fn new() -> Self{
+        Self {
+            name:"default".to_owned(),
+            age: 0,
+            profession: "default".to_owned(),
+            id:PersonId::Passport,        }
+    }
+
+    fn from(name: String, age:i32, profession:String, id:PersonId) -> Person{
+        Person{
+            name,
+            age,
+            profession,
+            id,
+        }
+    }
+
+
+    fn some_function() {
+        println!("Some Function");
+    }
+
+    fn display_age(&self){
+        //note in background rust is actually doing self: &Self
+        //this is a method
+        println!("{}", self.age);
+    }
+
+    fn change_age(&mut self, new_age: i32){
+        self.age = new_age;
+    }
+}
+
+let mut person = Person{
+    name:"Michael Jackson".to_owned(),
+    age:50,
+    profession: "Singer Songwriter".to_owned(),
+    id: PersonId::Passport
+};
+
+person.change_age(330);
+
+let mut person2 = Person::new();
+
+person2.change_age(500);
+
+let mut person3 = Person::from(
+    String::from("John"),
+    35,
+    String::from("Lancaster"),
+    PersonId::Passport,
+);
+
+
+println!("{:?}", person3.id);
+
+
+Dynamic Traits;
+
+the dynamic is used for synamic dispatch. The function in advance does not know which object we will pass at run time. 
+The other case where we just use impl, the compiler determines what type it is at compiletime. 
+The implementation version in background creates a version for which ever 
+type implements the trait. this can make your compile code large. 
+
+
+fn log_info2(value: &dyn Log) {
+    value.display_info();
+    value.send_shout_out();
+    value.alert();
+}
+
+fn log_info(value: impl Log) {
+    value.display_info();
+    value.send_shout_out();
+}
