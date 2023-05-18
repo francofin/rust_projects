@@ -1,0 +1,1 @@
+C:\Users\franc\Documents\Rust\rust_projects\snake_game\target\debug\main.exe: C:\Users\franc\Documents\Rust\rust_projects\snake_game\src\bin\main.rs C:\Users\franc\Documents\Rust\rust_projects\snake_game\src\lib.rs

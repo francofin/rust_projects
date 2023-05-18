@@ -109,24 +109,27 @@
 // }
 
 
-use rust_basics::*;
+use rust_basics::rust_types::*;
 
 fn main() {
 
     let another_person = Person::new();
     another_person.display_info();
 
-    let mut person = Person{
-        name:"ViniJr".to_owned(),
-        age:20,
-        profession: "Football Genius".to_owned(),
-        id: PersonId::Passport("XHG43902".to_owned()),
-    };
+    let mut person = Person::from("Vini Jr".to_owned(), 24, "Genius Footballer".to_owned(),PersonId::Passport("XHG77992".to_owned()));
+
+    // person.set_name("Vini Jr".to_owned());
     
     person.change_age(22);
     person.send_shout_out();
     person.display_info();
-    log_info(person);
+    log_info(&person);
+
+    person.set_name("Rodrygo Goes".to_owned());
+    person.change_age(22);
+    person.send_shout_out();
+    person.display_info();
+    log_info(&person);
     // Person::alert();
     // person.display_info();
     // println!("Person is {} and is {} who is a {}, identified by his {:?}",person.name, person.age, person.profession, print_id(person.id));

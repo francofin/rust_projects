@@ -1,0 +1,17 @@
+Rust groups errors to recoverable and unrecoverable errors. Recoverable rely on result type, unrecoverable look at th epanic macro. 
+Panic macro terminates the current thread. An out of bounds access will cause a panic. Panic can also abort where unwinding does not abort. 
+A Result Type allow us to prepare in case there is a failure. Result is an enum with 2 varibales Ok and err. 
+File handling returns a result. 
+
+We can use ErrKind. Unwrap is another tool.
+With unwrap. If ok is returnes, it returns value of OK. But if error it calls panic. 
+expect alllows us to customize errors.
+
+ We can propagate the errror up the call stack. use a ? operator. On any expressuin that produces a result. on Ok unwraps result to get success value, on error immediately returns and passes up
+ The rename method can rename file.
+
+ cfg is configuration, only include the following for a certain situation. 
+
+ asset_eq! makes sure the lhs is rhs
+ the assert macrois used to make sure a func evaluatest to true
+ We can also do assert_ne!

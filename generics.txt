@@ -1,0 +1,33 @@
+Generics, code that operate on many different types. 
+They are of any type until we figure out what type is needed. We cannot mix and match on the same T or Generic
+
+A trait is a capability, something that a type can do and can be shared with tohert types. 
+Can use format to format the printing of items. 
+
+Trait bounds, when using wit generics can force items of different type to be the same type
+
+There are utility traits, various traits from the standard lib
+Drop means freeing of resource, e.g when var goes out of scope, removing elements from vec etc. They are manually called even though implemented. 
+Its run by rust anyhow. 
+
+Also clone trait. Make copies of themselves. Clones can be time and memory expensive. i32 and bool implement clone. 
+i32 can be a copy type. A type is copy if it implements copy and clone. 
+Only if a shallow byte for byte copy is needed. OS handles and buffers cannot implement copy./ We can use derive. 
+
+From and into traits perform conversions on type and return as another. 
+From and Into traits. 
+
+Operator overloading, make our own types operate on artihmatic. 
+
+Crates are a tree of modules with existing code. Package one or more crates that provide functionality.
+Cargo new creates a new package, we have a src and target. src/lib.rs defines a library crate. Keep functionality together. 
+We add the  --lib to generate the lib.rs file after running cargo new <app> --lib for eg.
+
+We can install cargo modules. 
+
+In the lib.rs we add a mod and then item name and in it can define structs, function, other modules as well. Install cargo-modules, cargo install cargo-modules.
+Then we can do cargo modules generate tree which displays the set up of our crate with modules inside. cargo modules generate tree --with-types
+-- with-types shows us the type example pub for public. They are available within the crate but not outside. If no pub keyword is pub self which is private in other langs.
+Default for functions and structs etc. 
+
+PS I need to use cargo modules generate tree --orphans --types --fns. Visualize strructur of modules.

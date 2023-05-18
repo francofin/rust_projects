@@ -1,0 +1,22 @@
+Ints implements copy so we can either create a copy or use a reference if copy is not available on the data type. 
+TO shuffle a vector we need to add rand to our dependecnies in cargo toml. 
+
+Binary Heap a collections whose elements are kept loosely organized. Greatest value bubbles up to front. Usually push, pop and peek methods. 
+Sorts the collection with the largest value at the top.
+peek is similar to pop, but instead of getting a returned value and removing, it leaves the value there but returns the value. Also returns an Option<T>, None or Some(T)
+
+
+Map collection key pair values. There are HashMaps and BTreeMaps.
+HashMaps stored in a single heap memory allocation, bTreeMaps, in atreelike structure growing top down into nodes. 
+Duplicate keys just end up updateing the old value to new value and actually returns the old value.This is also an optionof <T>
+
+use the contains_key method to see if a key exist must be a ref. Returns a boolean.
+The .get method returns the value of the key which is an Option of <T>
+
+We also havbe a remove method which removes the key. Returns also an Option<T>
+remove_entry removes the pair value, so returns the kley and value.
+
+Sets can check if a value exist and does not contain duplicate. Sets only have keys and not key pair values. 
+There are also HashSet and BtreeSet. 
+
+We have an intersection method with 2 sets, to see which values are in both sets.  We also have union, returns values in first and or second hashset. method is .union(HASHET) i.e both sets without dups

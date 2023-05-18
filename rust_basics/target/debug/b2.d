@@ -1,1 +1,1 @@
-C:\Users\franc\Documents\Rust\rust_projects\rust_basics\target\debug\b2.exe: C:\Users\franc\Documents\Rust\rust_projects\rust_basics\src\bin\b2.rs C:\Users\franc\Documents\Rust\rust_projects\rust_basics\src\lib.rs
+C:\Users\franc\Documents\Rust\rust_projects\rust_basics\target\debug\b2.exe: C:\Users\franc\Documents\Rust\rust_projects\rust_basics\src\bin\b2.rs C:\Users\franc\Documents\Rust\rust_projects\rust_basics\src\extension_lib.rs C:\Users\franc\Documents\Rust\rust_projects\rust_basics\src\lib.rs

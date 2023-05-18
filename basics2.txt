@@ -80,7 +80,8 @@ the dynamic is used for synamic dispatch. The function in advance does not know 
 The other case where we just use impl, the compiler determines what type it is at compiletime. 
 The implementation version in background creates a version for which ever 
 type implements the trait. this can make your compile code large. 
-
+ Only structs marked as public need the fields to be public. But its better to have strcut fields private and expose getter functions 
+ 
 
 fn log_info2(value: &dyn Log) {
     value.display_info();

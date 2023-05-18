@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\rust_relearning\\rust_basics\\Cargo.toml"
+    ]
+}
