@@ -1,0 +1,6 @@
+Threads are suitable for a small number of tasks, spawn and switch are expensive. Threads allows us to use resync code
+Async reduce memory cpu and overhead. async uses a small amount of expensive threads. 
+Future is async computation that can produce a value. it is a trait. Pull allows us to check on state of current computation, 
+Has a Pin and mut self. 
+
+Taskss

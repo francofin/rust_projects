@@ -1,0 +1,15 @@
+macros are like functions that dont return but create something, although they casn be used to return a value, 
+It is siomething that does work on some level. 
+Procedural macros are macros which generate colde at complie time and produce a transformed version of it. 
+3 types of proc, attribute macro to add meta data to items in rust, func, structs, enum, 
+func like macro, feine function and take args. and generate a block of code included in program. 
+derived macros, used to implement traits on structs orn enuyms. 
+declarative macros, match a given patterna nd replace with specified code, definee new control structure
+
+(,)* is used in macros that expect 0 or more comma separated items, ex list of items
+Its a pattern used in dec macros. Handle empty input list, a base case
+
+$($val: expr) non empty list of values separated by commas
+
+$(+ {let _ =stringify($val); 1})* lets us count numnber of items in list, each item, item expands to a block of rust code, stignify value of item, 
+We add 1 to count. 

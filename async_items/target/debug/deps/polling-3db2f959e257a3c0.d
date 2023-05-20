@@ -1,0 +1,12 @@
+C:\Users\franc\Documents\Rust\rust_projects\async_items\target\debug\deps\polling-3db2f959e257a3c0.rmeta: C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\lib.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os\iocp.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\mod.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\afd.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\port.rs
+
+C:\Users\franc\Documents\Rust\rust_projects\async_items\target\debug\deps\libpolling-3db2f959e257a3c0.rlib: C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\lib.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os\iocp.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\mod.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\afd.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\port.rs
+
+C:\Users\franc\Documents\Rust\rust_projects\async_items\target\debug\deps\polling-3db2f959e257a3c0.d: C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\lib.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os\iocp.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\mod.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\afd.rs C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\port.rs
+
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\lib.rs:
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os.rs:
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\os\iocp.rs:
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\mod.rs:
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\afd.rs:
+C:\Users\franc\.cargo\registry\src\github.com-1ecc6299db9ec823\polling-2.8.0\src\iocp\port.rs:

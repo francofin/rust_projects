@@ -1,0 +1,20 @@
+Closures are function like construct that you can store in a varibale, and an iterator is a way of processing it.
+A closure is are anonymous function, saved in variables or passed into other functions. 
+
+fn fnmut fnonce
+fn closures we can call multiple times, borrows from env immutably. 
+fnmut called multiple times if closure is declared mut and borrwos mut values
+fnonce, can only be called once. 
+
+iterators implement Iterator trait. 
+Into iterator trait which is an iterator. We call the into iter method.
+
+Pointers
+General concept for a var in memory. Address points to data. E.g a referance. 
+Smart pointers in rust are rust are box ref counting RC, allows mutiple ownership and ref mut. enforces borrwoing rules at runtime. 
+
+Box is striaght forward pointer, allocate on heap rather than stack. Pointer to heap data remains on the stack
+RC allows multiple ownership, trracks number of references to evaluate. ARC is Atomic reference count. ARC is designed for safe sharing between threads
+
+RefrCell allows us to follow the interior immutable pattern, allows us to mutate data even for immutable variables. 
+Refcell gives us borrow and borrow_mut methods. Borrow returns mute <&T>

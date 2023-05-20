@@ -1,0 +1,1 @@
+C:\Users\franc\Documents\Rust\rust_projects\proc_macro_item\target\debug\proc_macro_item.exe: C:\Users\franc\Documents\Rust\rust_projects\proc_macro_item\src\lib.rs C:\Users\franc\Documents\Rust\rust_projects\proc_macro_item\src\main.rs

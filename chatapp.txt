@@ -1,0 +1,10 @@
+Utils defines results and error types in app.
+Serde serialize and deserialize data such as json. 
+Serialize and Deserialize convert data between in memoryrep and byte stream that can be transmitted or stored on disk. 
+Serialization converts structured memory into a format that can be transmitted or stored. A binary format, bytes or bits, json, xml, yaml. 
+Deserialization convert serialized data back to in memory rep, important for retrierving data from transmitted or stored format. 
+
+//type allows us to define a type alias, give existing type name a new name. 
+//Chat Error is name for the error. Box is a smart pointer, that provides heap allocation and ref counting for a specifric type. Avoid large amounts of copying;.
+// dyn Error is a trait that rep error types that can be used in Result. Send and Sync, are marker traits indicate a type is safe or share between diff threads
+//static indicates error must have life  time as long as chat program lives. 

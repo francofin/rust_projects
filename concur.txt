@@ -1,0 +1,24 @@
+Raise COnditions can occur where threads access the same data inefficienctly.
+We can spawn and join the threads. Move forces ownership in the closure. 
+Message passing through channels. Transmitter and a reciever. Transmitter sends, reciever takes in data. Channel is close when either end is dropped
+
+mpsc is a producer and allows us to produce multiple values without actually taking ownership at each step. 
+
+
+messages are sent to a queue until recv can handle, queue can get over populated, 
+When this happens we waste resources. We use these to send values. Resources should processs data sent insync channel can avoid this.
+sepcify how many values the queue can hold. send is a blocoking op when queue is filled. 
+send is moved across threads, sync is shared across threrads. E.g RC ref counter. 
+
+Mutextes to pass messages. A mutex is a mutual exclusion, allows 1 thread acess to some data at any given time. We use a lock.
+Must acquire lock before using data and given back once done with that specific data. 
+Arc shares things across threads, Mutex handy to mutatet data shared across threads. 
+
+When thread panics while mutex holds lokc is called poisioning. into_inner allows us to get value inside poisioned muex. 
+
+Good for if a thread may panic. 
+
+Rayon helps parrallelize data, gurantee safety. automatically spawn threads. 
+Uses same number of threads as number of CPUs available, other ise number of physical CPU. 
+rayon has an into_par_iter() which creates an into iterator but a prallel one.
+Rayon can help make prarallelizing apps much faster. 
